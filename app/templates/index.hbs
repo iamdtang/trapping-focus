@@ -1,0 +1,32 @@
+{{page-title "Home"}}
+
+<button type="button" {{on "click" this.openModal}}>
+  Open modal
+</button>
+
+{{#if this.isModalOpen}}
+  <ModalDialog @translucentOverlay={{true}}>
+    <h1>Contact Form</h1>
+    <form {{trap-focus}}>
+      <div>
+        <PowerSelect
+          @options={{this.countries}}
+          @selected={{this.country}}
+          @onChange={{this.setCountry}}
+          as |country|
+        >
+          {{country}}
+        </PowerSelect>
+      </div>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name">
+      </div>
+      <div>
+        <label for="bio">Bio</label>
+        <input type="text" id="bio">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </ModalDialog>
+{{/if}}
